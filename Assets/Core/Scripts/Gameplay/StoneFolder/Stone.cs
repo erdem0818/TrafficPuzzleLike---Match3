@@ -88,7 +88,7 @@ namespace Core.Scripts.Gameplay.StoneFolder
             
             var partGridPos = tempPart.transform.position;
             var targetPos = new Vector3(partGridPos.x, 0.3f, partGridPos.z);
-            Vector2Int targetIndex = new()
+            Coord2D targetIndex = new()
             {
                 x = tempPart.GetGridPos.x,
                 y = tempPart.GetGridPos.y
@@ -197,8 +197,11 @@ namespace Core.Scripts.Gameplay.StoneFolder
         }
         #endregion
 
+        private int _howManyPass = 0;
         public void MoveToTarget(Coord2D coord2D, bool isEmpty = false)
         {
+            _howManyPass++;
+            Debug.Log(_howManyPass);
             IsTempMovementFinished = false;
             
             var cell = _puzzleGrid.GetCell(coord2D.x, coord2D.y);
@@ -223,8 +226,8 @@ namespace Core.Scripts.Gameplay.StoneFolder
             
             GridCoordinate = new Vector2Int(coord2D.x, coord2D.y);
             
-            _moveToTargetTween?.Kill();
-            float dur = isEmpty ? (_puzzleGrid.Size.x * Values.OneGridPassTime) * 0.5f : Values.OneGridPassTime * 2;
+            _moveToTargetTween?.Kill(false);
+            float dur = isEmpty ? (_puzzleGrid.Size.x * Values.OneGridPassTime) * 0.5f : Values.OneGridPassTime * _howManyPass;
 
             _moveToTargetTween = transform.DOMove(cell.transform.position + Vector3.up * .3f, dur)
                 .SetEase(Ease.OutSine)
@@ -246,6 +249,7 @@ namespace Core.Scripts.Gameplay.StoneFolder
                         }
                         
                         IsTempMovementFinished = true;
+                        _howManyPass = 0;
                 }).SetAutoKill();
         }
         
@@ -297,9 +301,9 @@ namespace Core.Scripts.Gameplay.StoneFolder
             transform.rotation = Direction switch
             {
                 Direction.Up => Quaternion.identity,
-                Direction.Down => Quaternion.Euler(0f, 180f, 0f),
-                Direction.Right => Quaternion.Euler(0f, 90f, 0f),
-                Direction.Left => Quaternion.Euler(0f, 270f, 0f),
+                Direction.Down => Quaternion.Euler(0f, -180f, 0f),
+                Direction.Right => Quaternion.Euler(0f, -270f, 0f),
+                Direction.Left => Quaternion.Euler(0f, -90f, 0f),
                 Direction.None => Quaternion.identity,
                 _ => throw new ArgumentOutOfRangeException(nameof(Direction), Direction, null)
             };

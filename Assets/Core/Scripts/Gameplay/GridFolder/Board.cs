@@ -421,7 +421,7 @@ namespace Core.Scripts.Gameplay.GridFolder
                 {
                     if (StoneCanMove(stone, Direction.Right))
                     {
-                        Debug.Log($"can move {stone.name}", stone);
+                        //Debug.Log($"can move {stone.name}", stone);
                         stone.MoveToTarget(new Coord2D(stone.GridCoordinate.x + 1, stone.GridCoordinate.y));
                         howMany++;
                         localMovables.Add(stone);
@@ -472,7 +472,7 @@ namespace Core.Scripts.Gameplay.GridFolder
                 {
                     if (StoneCanMove(stone, Direction.Left))
                     {
-                        Debug.Log($"can move {stone.name}", stone);
+                        //Debug.Log($"can move {stone.name}", stone);
                         stone.MoveToTarget(new Coord2D(stone.GridCoordinate.x - 1, stone.GridCoordinate.y));
                         howMany++;
                         localMovables.Add(stone);
@@ -496,7 +496,7 @@ namespace Core.Scripts.Gameplay.GridFolder
                 howMany = 0;
                 foreach (var stone in upDirections.Where(s => StoneCanMove(s, Direction.Up)))
                 {
-                    Debug.Log($"can move {stone.name}", stone);
+                    //Debug.Log($"can move {stone.name}", stone);
                     stone.MoveToTarget(new Coord2D(stone.GridCoordinate.x, stone.GridCoordinate.y + 1));
                     howMany++;
                     localMovables.Add(stone);
@@ -606,13 +606,13 @@ namespace Core.Scripts.Gameplay.GridFolder
         {
             if (x >= _width || y >= _height)
             {
-                Debug.Log("No Index");
+                //Debug.Log("No Index");
                 return false;
             }
 
             if (x < 0 || y < 0)
             {
-                Debug.Log("Negative");
+                //Debug.Log("Negative");
                 return false;
             }
 
