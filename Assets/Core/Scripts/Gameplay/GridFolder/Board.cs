@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Scripts.Gameplay.Signals;
 using Core.Scripts.Gameplay.StoneFolder;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 using Sirenix.Utilities;
@@ -71,10 +72,11 @@ namespace Core.Scripts.Gameplay.GridFolder
         
         private void CheckForExplosionInvoker()
         {
-            StartCoroutine(CheckForExplosion());
+            //StartCoroutine(CheckForExplosion());
+            CheckForExplosion().Forget();
         }
         
-        private IEnumerator CheckForExplosion()
+        private async UniTask CheckForExplosion()
         {
             IList<Stone> filled = GetFilledList();
             while (IsThereAnyExplosion(filled, 4) || IsThereAnyBooster(filled))
@@ -108,11 +110,14 @@ namespace Core.Scripts.Gameplay.GridFolder
                 bool IsStonesExploded() => expStones.All(s => s.IsExploded);
                 //Debug.Log($"Is ALL EXPLODED {IsStonesExploded()}");
                 
-                yield return new WaitUntil(IsStonesExploded);
+                //yield return new WaitUntil(IsStonesExploded);
+                await UniTask.WaitUntil(IsStonesExploded);
                 
                 _signalBus.TryFire<OnExplosionHappenedSignal>();
 
-                yield return StartCoroutine(CheckForMovement(filled));
+                //yield return StartCoroutine(CheckForMovement(filled));
+                await CheckForMovement(filled);
+                
                 filled.Clear();
                 filled = GetFilledList();
             }
@@ -387,21 +392,23 @@ namespace Core.Scripts.Gameplay.GridFolder
             return explodeStones;
         }
         
-        private IEnumerator CheckForMovement(IList<Stone> filled)
+        private async UniTask CheckForMovement(IList<Stone> filled)
         {
             while (IsThereAnyMovableStone())
             {
-                yield return CheckMovementForRight(filled);
-                yield return CheckMovementForDown(filled);
-                yield return CheckMovementForLeft(filled);
-                yield return CheckMovementForUp(filled);
+                await CheckMovementForRight(filled);
+                await CheckMovementForDown(filled);
+                await CheckMovementForLeft(filled);
+                await CheckMovementForUp(filled);
             }
 
-            yield return null;
+            //yield return null;
+            await UniTask.Yield();
+            
             _signalBus.TryFire<OnEveryStoneMovementFinishedSignal>();
         }
 
-        private IEnumerator CheckMovementForRight(IList<Stone> filled)
+        private UniTask CheckMovementForRight(IList<Stone> filled)
         {
             IList<Stone> localMovables = new List<Stone>();
             int howMany = 0;
@@ -423,10 +430,11 @@ namespace Core.Scripts.Gameplay.GridFolder
             } while (howMany > 0);
 
             bool AllRightFinished() => localMovables.All(s => s.IsTempMovementFinished);
-            return new WaitUntil(AllRightFinished);
+            //return new WaitUntil(AllRightFinished);
+            return UniTask.WaitUntil(AllRightFinished);
         }
         
-        private IEnumerator CheckMovementForDown(IList<Stone> filled)
+        private UniTask CheckMovementForDown(IList<Stone> filled)
         {
             IList<Stone> localMovables = new List<Stone>();
             int howMany = 0;
@@ -447,10 +455,11 @@ namespace Core.Scripts.Gameplay.GridFolder
             } while (howMany > 0);
             
             bool AllDownFinished() => localMovables.All(s => s.IsTempMovementFinished); // was rightDirections
-            return new WaitUntil(AllDownFinished);
+            //return new WaitUntil(AllDownFinished);
+            return UniTask.WaitUntil(AllDownFinished);
         }
         
-        private IEnumerator CheckMovementForLeft(IList<Stone> filled)
+        private UniTask CheckMovementForLeft(IList<Stone> filled)
         {
             IList<Stone> localMovables = new List<Stone>();
             int howMany = 0;
@@ -472,10 +481,11 @@ namespace Core.Scripts.Gameplay.GridFolder
             } while (howMany > 0);
             
             bool AllLeftFinished() => localMovables.All(s => s.IsTempMovementFinished); // was rightDirections
-            return new WaitUntil(AllLeftFinished);
+            //return new WaitUntil(AllLeftFinished);
+            return UniTask.WaitUntil(AllLeftFinished);
         }
         
-        private IEnumerator CheckMovementForUp(IList<Stone> filled)
+        private UniTask CheckMovementForUp(IList<Stone> filled)
         {
             IList<Stone> localMovables = new List<Stone>();
             int howMany = 0;
@@ -494,7 +504,8 @@ namespace Core.Scripts.Gameplay.GridFolder
             } while (howMany > 0);
             
             bool AllUpFinished() => localMovables.All(s => s.IsTempMovementFinished); // was rightDirections
-            return new WaitUntil(AllUpFinished);
+            //return new WaitUntil(AllUpFinished);
+            return UniTask.WaitUntil(AllUpFinished);
         }
         
         #region Access Methods
