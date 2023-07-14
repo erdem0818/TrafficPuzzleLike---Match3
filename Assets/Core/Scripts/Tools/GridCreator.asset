@@ -1,0 +1,389 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90d57d487c66ab48910c0ccd1c1a229, type: 3}
+  m_Name: GridCreator
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 6750823889755059168, guid: 169f3c7c0fab35e4dad24e9e39cb21b5, type: 3}
+    - {fileID: 6750823889755059168, guid: cae134d3e52e3aa4cb3a07fea6dc6e2a, type: 3}
+    - {fileID: 6750823889755059168, guid: 4526209f11fdd3a4b840693fb4672822, type: 3}
+    - {fileID: 6750823889755059168, guid: 73da81398b526c94482dc1bbcad301eb, type: 3}
+    - {fileID: 5616925721315658370, guid: a048ebd800726734ebfb69432b9a5f12, type: 3}
+    - {fileID: 5616925721315658370, guid: 14322e1738df40f499576db3f1b995ee, type: 3}
+    - {fileID: 5616925721315658370, guid: 3844a30f552e9bf468a3b0d3880a429d, type: 3}
+    - {fileID: 5616925721315658370, guid: 0e2cc38a48539114eadaccdf5335144e, type: 3}
+    - {fileID: 3685869164482961324, guid: 948706311d33b264a98208dbd448dc57, type: 3}
+    - {fileID: 3685869164482961324, guid: 333994bbd94e54d4fad2c42ea099a715, type: 3}
+    - {fileID: 3685869164482961324, guid: bb50b47454b65a344a30027f0f1c3c2c, type: 3}
+    - {fileID: 3685869164482961324, guid: 11493628569f7d743aab26b8688d3b02, type: 3}
+    - {fileID: 5264356225036342593, guid: 1b7423b93195c1e43b1a228227d26922, type: 3}
+    - {fileID: 5264356225036342593, guid: ed1bdb14b1ca7854bbd0da998e4d55fc, type: 3}
+    - {fileID: 5264356225036342593, guid: 12c865c9b6ad91745b2b281ef42195f7, type: 3}
+    - {fileID: 5264356225036342593, guid: 8f1a856d6923bf943a8d9a08a208f204, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: PlaceableStones
+      Entry: 7
+      Data: 0|UnityEngine.GameObject[,], UnityEngine.CoreModule
+    - Name: 
+      Entry: 12
+      Data: 20
+    - Name: ranks
+      Entry: 1
+      Data: 4|5
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 10
+      Data: 13
+    - Name: 
+      Entry: 10
+      Data: 14
+    - Name: 
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Stones
+      Entry: 7
+      Data: 1|UnityEngine.GameObject[,], UnityEngine.CoreModule
+    - Name: 
+      Entry: 12
+      Data: 36
+    - Name: ranks
+      Entry: 1
+      Data: 6|6
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CustomCellDrawing
+      Entry: 7
+      Data: 2|System.Boolean[,], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 36
+    - Name: ranks
+      Entry: 1
+      Data: 6|6
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  gridProperties:
+    width: 6
+    height: 6
+    tileSize: 1
+    scale: 1
+    spacing: 0
+    randomRotation: 0
+    startPoint: {x: 0, y: 0, z: 0}
+  arrowPrefab: {fileID: 26981617283301419, guid: 7bd69a70d48153349aa17446bb238123, type: 3}
+  gridPrefabs:
+  - {fileID: 1029762485626762267, guid: 8c2ec1c53b084a0459c39048881535d9, type: 3}
+  - {fileID: 5664313074380306036, guid: a8ff4133def634c41b7af5a5bc0934e2, type: 3}
+  allStones:
+  - {fileID: 6750823889755059168, guid: 169f3c7c0fab35e4dad24e9e39cb21b5, type: 3}
+  - {fileID: 5616925721315658370, guid: a048ebd800726734ebfb69432b9a5f12, type: 3}
+  - {fileID: 3685869164482961324, guid: 948706311d33b264a98208dbd448dc57, type: 3}
+  - {fileID: 5264356225036342593, guid: 1b7423b93195c1e43b1a228227d26922, type: 3}
+  - {fileID: 6750823889755059168, guid: cae134d3e52e3aa4cb3a07fea6dc6e2a, type: 3}
+  - {fileID: 5616925721315658370, guid: 14322e1738df40f499576db3f1b995ee, type: 3}
+  - {fileID: 3685869164482961324, guid: 333994bbd94e54d4fad2c42ea099a715, type: 3}
+  - {fileID: 5264356225036342593, guid: ed1bdb14b1ca7854bbd0da998e4d55fc, type: 3}
+  - {fileID: 6750823889755059168, guid: 4526209f11fdd3a4b840693fb4672822, type: 3}
+  - {fileID: 5616925721315658370, guid: 3844a30f552e9bf468a3b0d3880a429d, type: 3}
+  - {fileID: 3685869164482961324, guid: bb50b47454b65a344a30027f0f1c3c2c, type: 3}
+  - {fileID: 5264356225036342593, guid: 12c865c9b6ad91745b2b281ef42195f7, type: 3}
+  - {fileID: 6750823889755059168, guid: 73da81398b526c94482dc1bbcad301eb, type: 3}
+  - {fileID: 5616925721315658370, guid: 0e2cc38a48539114eadaccdf5335144e, type: 3}
+  - {fileID: 3685869164482961324, guid: 11493628569f7d743aab26b8688d3b02, type: 3}
+  - {fileID: 5264356225036342593, guid: 8f1a856d6923bf943a8d9a08a208f204, type: 3}
