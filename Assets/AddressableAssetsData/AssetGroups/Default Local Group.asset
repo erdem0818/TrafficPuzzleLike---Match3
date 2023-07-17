@@ -16,7 +16,71 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: e6c303ea8358e77478b36b652458d91f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 14322e1738df40f499576db3f1b995ee
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_LeftGreenStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8f1a856d6923bf943a8d9a08a208f204
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_UpYellowStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1b7423b93195c1e43b1a228227d26922
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_DownYellowStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4526209f11fdd3a4b840693fb4672822
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_RightBlueStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0e2cc38a48539114eadaccdf5335144e
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_UpGreenStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a048ebd800726734ebfb69432b9a5f12
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_DownGreenStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 11493628569f7d743aab26b8688d3b02
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_UpRedStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 169f3c7c0fab35e4dad24e9e39cb21b5
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_DownBlueStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 948706311d33b264a98208dbd448dc57
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_DownRedStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 73da81398b526c94482dc1bbcad301eb
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_UpBlueStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cae134d3e52e3aa4cb3a07fea6dc6e2a
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_LeftBlueStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 333994bbd94e54d4fad2c42ea099a715
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_LeftRedStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ed1bdb14b1ca7854bbd0da998e4d55fc
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_LeftYellowStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3844a30f552e9bf468a3b0d3880a429d
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_RightGreenStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bb50b47454b65a344a30027f0f1c3c2c
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_RightRedStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12c865c9b6ad91745b2b281ef42195f7
+    m_Address: Assets/Core/Prefabs/Stone Prefabs/_RightYellowStone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f91d978e43d9084a97d8ac956dc08e7, type: 2}
   m_SchemaSet:

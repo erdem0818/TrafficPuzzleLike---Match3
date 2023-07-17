@@ -82,7 +82,7 @@ namespace Core.Scripts.Gameplay.Player
 
             tempStone.transform.position = pos + Vector3.up * .3f;
             tempStone.SpawnCoordinate = arrow.GridPosition;
-            tempStone.Direction = arrow.Direction;
+            //tempStone.Direction = arrow.Direction;
             tempStone.SetupStone(tempStone.StoneColor, arrow.Direction);
             tempStone.name = $"Stone ({tempStone.GridCoordinate.x},{tempStone.GridCoordinate.y})";
             
@@ -105,8 +105,6 @@ namespace Core.Scripts.Gameplay.Player
         {
             _canInput = true;
         }
-
-        public void LockUnlockInput(bool b) => _canInput = b;
 
         [CanBeNull]
         private T GetSelectedGridPart<T>(int bitmask) where T : MonoBehaviour

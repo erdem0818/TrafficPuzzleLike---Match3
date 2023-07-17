@@ -11,6 +11,7 @@ namespace Core.Scripts.Gameplay.Pools
             base.OnSpawned(item);
             
             item.transform.localScale = Vector3.one * 0.9f;
+            item.transform.rotation = Quaternion.identity;
             item.IsExploded = false;
             item.IsTempMovementFinished = false;
         }
