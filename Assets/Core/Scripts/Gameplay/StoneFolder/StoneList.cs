@@ -19,14 +19,7 @@ namespace Core.Scripts.Gameplay.StoneFolder
         [Inject] private CountTextHandler _textHandler;
         //[Inject] private QuestListener _questListener;
 
-        [Inject(Id = (ushort)StoneColor.Blue)] private StonePool _bluePool;
-        [Inject(Id = (ushort)StoneColor.Green)] private StonePool _greenPool;
-        [Inject(Id = (ushort)StoneColor.Red)] private StonePool _redPool;
-        [Inject(Id = (ushort)StoneColor.Yellow)] private StonePool _yellowPool;
-        //[Inject(Id = (ushort)StoneColor.Colorful)] private StonePool _colorfulPool;
-        //[Inject(Id = (ushort)StoneColor.Quadra)] private StonePool _quadraPool;
-        //[Inject(Id = (ushort)StoneColor.ColRow)] private StonePool _colRowPool;
-        //[Inject(Id = (ushort)StoneColor.AllOneColor)] private StonePool _allOneColorPool;
+        [Inject(Id = (ushort)StoneColor.Green)] private StonePool _stonePool;
 
         [SerializeField] private GameObject gonnaSpawned;
 
@@ -89,7 +82,7 @@ namespace Core.Scripts.Gameplay.StoneFolder
             _clickCount--;
             
             _currentStone = GetStoneByColor(_nextColor);
-
+            _currentStone.StoneColor = _nextColor;
             return _currentStone;
         }
         
@@ -98,22 +91,19 @@ namespace Core.Scripts.Gameplay.StoneFolder
             _textHandler.SetText(_clickCount);
 
             if (_clickCount <= 0) return;
-
-            if(desiredStoneList.Count > 0)
-                desiredStoneList.Remove(desiredStoneList[0]);
-            else
-                _nextColor = NextColor();
             
-            if (_currentStone != null)
-            {
-                _currentStone.transform.position = new Vector3(0f, 0f, -60f);
-            }
+            _nextColor = NextColor();
+            DebugVisual(_nextColor);
         }
 
         private StoneColor NextColor()
         {
             if (desiredStoneList.Count > 0)
-                return desiredStoneList[0];
+            {
+                var res = GetFirstColor();
+                desiredStoneList.Remove(res);
+                return res;
+            }
 
             var colorsOnboard = ColorsOnBoard();
             int rnd = Random.Range(0, colorsOnboard.Count);
@@ -149,11 +139,6 @@ namespace Core.Scripts.Gameplay.StoneFolder
             ClearByColor(StoneColor.Blue);
             ClearByColor(StoneColor.Yellow);
             ClearByColor(StoneColor.Green);
-            
-            if(desiredStoneList.Count > 0)
-                DebugVisual(desiredStoneList[0]);
-            else
-                DebugVisual(_nextColor);
         }
 
         private void ClearByColor(StoneColor color)
@@ -183,22 +168,10 @@ namespace Core.Scripts.Gameplay.StoneFolder
 
         private Stone GetStoneByColor(StoneColor color)
         {
-            return color switch
-            {
-                StoneColor.Yellow => _yellowPool.Spawn(),
-                StoneColor.Blue => _bluePool.Spawn(),
-                StoneColor.Green => _greenPool.Spawn(),
-                StoneColor.Red => _redPool.Spawn(),
-                //StoneColor.Colorful => _colorfulPool.Spawn(),
-                //StoneColor.Quadra => _quadraPool.Spawn(),
-                //StoneColor.ColRow => _colRowPool.Spawn(),
-                //StoneColor.AllOneColor => _allOneColorPool.Spawn(),
-                StoneColor.None => null,
-                _ => throw new ArgumentOutOfRangeException()
-            };
+            return color == StoneColor.None ? null : _stonePool.Spawn();
         }
 
-        public StoneColor GetNextColor()
+        public StoneColor GetFirstColor()
         {
             return desiredStoneList[0];
         }
@@ -236,7 +209,8 @@ namespace Core.Scripts.Gameplay.StoneFolder
             for (int i = 0; i < gonnaSpawned.transform.childCount; i++) //gonna be 8 ı guess
                 gonnaSpawned.transform.GetChild(i).gameObject.SetActive(false);
             
-            gonnaSpawned.transform.GetChild((int)color).gameObject.SetActive(true);
+            if(((int)color) <= 3)
+                gonnaSpawned.transform.GetChild((int)color).gameObject.SetActive(true);
         }
     }
 }

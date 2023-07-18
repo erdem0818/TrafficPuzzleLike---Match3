@@ -57,8 +57,8 @@ namespace Core.Scripts.Gameplay.StoneFolder
 
         private void Awake()
         {
-            if(StoneColor != StoneColor.None)
-                _stonePool = _poolProvider.GetPool(StoneColor);
+            if (StoneColor != StoneColor.None)
+                _stonePool = _poolProvider.GetPool(StoneColor.Green); //_poolProvider.GetPool(StoneColor);
         }
         
         public void Move(bool afterSpawn = false)
@@ -121,7 +121,7 @@ namespace Core.Scripts.Gameplay.StoneFolder
                         var frontCell = _puzzleGrid.GetCell(frontCoord.x, frontCoord.y);
                         if (frontCell != null && frontCell.stone != null)
                         {
-                            StoneColor = frontCell.stone.StoneColor != StoneColor.None ? frontCell.stone.StoneColor : _stoneList.GetNextColor();
+                            StoneColor = frontCell.stone.StoneColor != StoneColor.None ? frontCell.stone.StoneColor : _stoneList.GetFirstColor();
                             
                             transform.GetChild(0).gameObject.SetActive(false);
                             transform.GetChild((int)StoneColor + 1).gameObject.SetActive(true);
@@ -201,7 +201,7 @@ namespace Core.Scripts.Gameplay.StoneFolder
         public void MoveToTarget(Coord2D coord2D, bool isEmpty = false)
         {
             _howManyPass++;
-            Debug.Log(_howManyPass);
+            //Debug.Log(_howManyPass);
             IsTempMovementFinished = false;
             
             var cell = _puzzleGrid.GetCell(coord2D.x, coord2D.y);
@@ -297,6 +297,10 @@ namespace Core.Scripts.Gameplay.StoneFolder
         {
             StoneColor = stoneColor;
             Direction = direction;
+
+            MaterialPropertyBlock block = new MaterialPropertyBlock();
+            block.SetColor("_Color", GetColorByEnum(stoneColor));
+            GetComponent<MeshRenderer>().SetPropertyBlock(block);
             
             transform.rotation = Direction switch
             {
@@ -306,6 +310,23 @@ namespace Core.Scripts.Gameplay.StoneFolder
                 Direction.Left => Quaternion.Euler(0f, -90f, 0f),
                 Direction.None => Quaternion.identity,
                 _ => throw new ArgumentOutOfRangeException(nameof(Direction), Direction, null)
+            };
+        }
+
+        private static Color GetColorByEnum(StoneColor color)
+        {
+            return color switch
+            {
+                StoneColor.Blue => Color.blue,
+                StoneColor.Yellow => Color.yellow,
+                StoneColor.Green => Color.green,
+                StoneColor.Red => Color.red,
+                StoneColor.Colorful => Color.black,
+                StoneColor.Quadra => Color.magenta,
+                StoneColor.ColRow => Color.cyan,
+                StoneColor.AllOneColor => new Color(200, 200, 50),
+                StoneColor.None => Color.gray,
+                _ => throw new ArgumentOutOfRangeException(nameof(color), color, null)
             };
         }
     }

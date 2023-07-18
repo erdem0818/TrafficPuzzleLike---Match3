@@ -24,10 +24,10 @@ namespace Core.Scripts.Gameplay.Injection
         [SerializeField] private Stone GreenBirdStone;
         [SerializeField] private Stone RedBirdStone;
         [SerializeField] private Stone YellowBirdStone;
-        //"[SerializeField] private Stone colorfulStone;
-        //"[SerializeField] private Stone quadraStone;
-        //"[SerializeField] private Stone colRowStone;
-        //"[SerializeField] private Stone allOneColorStone;
+        //[SerializeField] private Stone colorfulStone;
+        //[SerializeField] private Stone quadraStone;
+        //[SerializeField] private Stone colRowStone;
+        //[SerializeField] private Stone allOneColorStone;
         
         [Space(15)]
         [SerializeField] private StoneList stoneList;
@@ -39,26 +39,11 @@ namespace Core.Scripts.Gameplay.Injection
             
             Container.BindInstance(board);
             Container.BindInstance(stoneList);
-            //Container.Bind<ParticleController>().AsSingle();
-            //Container.BindInstance(FindObjectOfType<QuestListener>());
-            //Container.BindInstance(FindObjectOfType<LevelManager>());
             Container.BindInstance(new CountTextHandler(countText));
             Container.Bind<IPoolProvider>().FromInstance(this).AsSingle();
-
-            BindStonePool(blueBirdStone, StoneColor.Blue, "Blue Stones");
-            BindStonePool(GreenBirdStone, StoneColor.Green, "Green Stones");
-            BindStonePool(RedBirdStone, StoneColor.Red, "Red Stones");
-            BindStonePool(YellowBirdStone, StoneColor.Yellow, "Yellow Stones");
-            //BindStonePool(colorfulStone, StoneColor.Colorful, "Colorful Stones");
-            //BindStonePool(quadraStone, StoneColor.Quadra, "Quadra Stones");
-            //BindStonePool(colRowStone, StoneColor.ColRow, "ColRow Stones");
-            //BindStonePool(allOneColorStone, StoneColor.AllOneColor, "AllOneColor Stones");
-
-            //Container.BindMemoryPool<ParticleSystem, ParticlePool>()
-            //    .WithInitialSize(20)
-            //    .FromComponentInNewPrefab(matchExpParticle)
-            //    .UnderTransformGroup("Particles")
-            //    .NonLazy();
+            
+            //green is default
+            BindStonePool(GreenBirdStone, StoneColor.Green, "Stones");
 
             BindSignals();
         }
@@ -67,7 +52,7 @@ namespace Core.Scripts.Gameplay.Injection
         {
             Container.BindMemoryPool<Stone, StonePool>()
                 .WithId((ushort)typeP)
-                .WithInitialSize(5)
+                .WithInitialSize(15)
                 .FromComponentInNewPrefab(prefabP)
                 .UnderTransformGroup(nameP)
                 .NonLazy();

@@ -2498,7 +2498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gonnaSpawned: {fileID: 1859600960}
-  desiredStoneList: 01000100
+  desiredStoneList: 00000100030000000200
   maxClickCount: 20
   _clickCount: 0
 --- !u!4 &672147063
@@ -6553,6 +6553,10 @@ MonoBehaviour:
   GreenBirdStone: {fileID: 5616925721315658381, guid: 0e2cc38a48539114eadaccdf5335144e, type: 3}
   RedBirdStone: {fileID: 3685869164482961315, guid: 11493628569f7d743aab26b8688d3b02, type: 3}
   YellowBirdStone: {fileID: 5264356225036342606, guid: 8f1a856d6923bf943a8d9a08a208f204, type: 3}
+  colorfulStone: {fileID: 4029750079529291981, guid: 0c5186c28d28d65428d4192bace56261, type: 3}
+  quadraStone: {fileID: 0}
+  colRowStone: {fileID: 0}
+  allOneColorStone: {fileID: 0}
   stoneList: {fileID: 672147062}
   countText: {fileID: 241301989}
 --- !u!1001 &2135685260
