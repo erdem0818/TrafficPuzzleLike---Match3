@@ -25,7 +25,6 @@ namespace Core.Scripts.Gameplay.StoneFolder
     {
         [Inject] private SignalBus _signalBus;
         [Inject] private Board _puzzleGrid;
-        //[Inject] private IPoolProvider _poolProvider;
         [Inject] private StoneList _stoneList;
 
         [Inject(Id = "StonePool")] private StonePool _stonePool;
@@ -52,12 +51,6 @@ namespace Core.Scripts.Gameplay.StoneFolder
         private void OnDisable()
         {
             _moveToTargetTween?.Kill();
-        }
-
-        private void Awake()
-        {
-            //if (StoneColor != StoneColor.None)
-                //_stonePool = _poolProvider.GetPool(StoneColor.Green); //_poolProvider.GetPool(StoneColor);
         }
         
         public void Move(bool afterSpawn = false)
