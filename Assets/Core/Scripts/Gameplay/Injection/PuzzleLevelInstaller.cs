@@ -19,16 +19,9 @@ namespace Core.Scripts.Gameplay.Injection
         [Header("Puzzle Grid Settings")] 
         [SerializeField] private Board board;
         
-        [Header("Stone Pool Settings")] 
-        [SerializeField] private Stone blueBirdStone;
-        [SerializeField] private Stone GreenBirdStone;
-        [SerializeField] private Stone RedBirdStone;
-        [SerializeField] private Stone YellowBirdStone;
-        //[SerializeField] private Stone colorfulStone;
-        //[SerializeField] private Stone quadraStone;
-        //[SerializeField] private Stone colRowStone;
-        //[SerializeField] private Stone allOneColorStone;
-        
+        [Header("Stone Pool Settings")]
+        [SerializeField] private Stone DefaultStone;
+
         [Space(15)]
         [SerializeField] private StoneList stoneList;
         [SerializeField] private TextMeshProUGUI countText;
@@ -43,15 +36,15 @@ namespace Core.Scripts.Gameplay.Injection
             Container.Bind<IPoolProvider>().FromInstance(this).AsSingle();
             
             //green is default
-            BindStonePool(GreenBirdStone, StoneColor.Green, "Stones");
+            BindStonePool(DefaultStone, "StonePool", "Stones");
 
             BindSignals();
         }
         
-        private void BindStonePool(Stone prefabP, StoneColor typeP, string nameP)
+        private void BindStonePool(Stone prefabP, object id, string nameP)
         {
             Container.BindMemoryPool<Stone, StonePool>()
-                .WithId((ushort)typeP)
+                .WithId(id)
                 .WithInitialSize(15)
                 .FromComponentInNewPrefab(prefabP)
                 .UnderTransformGroup(nameP)
@@ -70,10 +63,6 @@ namespace Core.Scripts.Gameplay.Injection
             Container.DeclareSignal<OnLevelWinSignal>().OptionalSubscriber();
             Container.DeclareSignal<OnLevelFailSignal>().OptionalSubscriber();
             
-            //Container.DeclareSignal<OnColorfulStoneClickSignal>().OptionalSubscriber();
-            //Container.DeclareSignal<OnQuadraStoneClickSignal>().OptionalSubscriber();
-            //Container.DeclareSignal<OnColRowBoosterClickSignal>().OptionalSubscriber();
-            //Container.DeclareSignal<OnAllOneColorBoosterClickSignal>().OptionalSubscriber();
             Container.DeclareSignal<OnQuestDoneSignal>().OptionalSubscriber();
         }
         

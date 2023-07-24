@@ -25,11 +25,10 @@ namespace Core.Scripts.Gameplay.StoneFolder
     {
         [Inject] private SignalBus _signalBus;
         [Inject] private Board _puzzleGrid;
-        [Inject] private IPoolProvider _poolProvider;
-        //[Inject] private ParticleController _particlePool;
+        //[Inject] private IPoolProvider _poolProvider;
         [Inject] private StoneList _stoneList;
 
-        private StonePool _stonePool = null;
+        [Inject(Id = "StonePool")] private StonePool _stonePool;
         
         [field: SerializeField] public StoneColor StoneColor { get; set; }
         [field: SerializeField] public Direction Direction { get; set; }
@@ -57,8 +56,8 @@ namespace Core.Scripts.Gameplay.StoneFolder
 
         private void Awake()
         {
-            if (StoneColor != StoneColor.None)
-                _stonePool = _poolProvider.GetPool(StoneColor.Green); //_poolProvider.GetPool(StoneColor);
+            //if (StoneColor != StoneColor.None)
+                //_stonePool = _poolProvider.GetPool(StoneColor.Green); //_poolProvider.GetPool(StoneColor);
         }
         
         public void Move(bool afterSpawn = false)

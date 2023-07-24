@@ -19,7 +19,7 @@ namespace Core.Scripts.Gameplay.StoneFolder
         [Inject] private CountTextHandler _textHandler;
         //[Inject] private QuestListener _questListener;
 
-        [Inject(Id = (ushort)StoneColor.Green)] private StonePool _stonePool;
+        [Inject(Id = "StonePool")] private StonePool _stonePool;
 
         [SerializeField] private GameObject gonnaSpawned;
 
@@ -29,8 +29,7 @@ namespace Core.Scripts.Gameplay.StoneFolder
         [Header("DESIRED STONE ORDER")]
         [SerializeField] private List<StoneColor> desiredStoneList;
         [SerializeField] private int maxClickCount;
-        [SerializeField] private int _clickCount = 0;
-        public (int max, int click) GetCounts => new(maxClickCount, _clickCount);
+        private int _clickCount = 0;
 
         private List<Stone> _allStones;
         private bool _isWon = false;
@@ -42,11 +41,6 @@ namespace Core.Scripts.Gameplay.StoneFolder
             
             _signalBus.Subscribe<OnStoneMovedOnEmptySignal>(CheckIfWinOrFail);
             _signalBus.Subscribe<OnStoneMovedOnEmptySignal>(OnExplosion);
-            
-            //_signalBus.Subscribe<OnColorfulStoneClickSignal>(SetColorfulBooster);
-            //_signalBus.Subscribe<OnQuadraStoneClickSignal>(SetQuadraBooster);
-            //_signalBus.Subscribe<OnColRowBoosterClickSignal>(SetColRowBooster);
-            //_signalBus.Subscribe<OnAllOneColorBoosterClickSignal>(SetAllOneColorBooster);
         }
 
         private void OnDisable()
@@ -56,16 +50,11 @@ namespace Core.Scripts.Gameplay.StoneFolder
 
             _signalBus.Unsubscribe<OnStoneMovedOnEmptySignal>(CheckIfWinOrFail);
             _signalBus.Unsubscribe<OnStoneMovedOnEmptySignal>(OnExplosion);
-            
-            //_signalBus.Unsubscribe<OnColorfulStoneClickSignal>(SetColorfulBooster);
-            //_signalBus.Unsubscribe<OnQuadraStoneClickSignal>(SetQuadraBooster);
-            //_signalBus.Unsubscribe<OnColRowBoosterClickSignal>(SetColRowBooster);
-            //_signalBus.Unsubscribe<OnAllOneColorBoosterClickSignal>(SetAllOneColorBooster);
         }
 
         private void Awake()
         {
-            DebugVisual(desiredStoneList[0]);
+            DebugVisual(GetFirstColor());
             
             _clickCount = maxClickCount;
             _textHandler.SetText(_clickCount);
